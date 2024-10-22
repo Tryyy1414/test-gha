@@ -30,11 +30,11 @@ jobs:
         
         - name: Set Kubernetes context
           run: |
-          az aks get-credentials --resource-group ${{ secrets.AKS_RESOURCE_GROUP }} --name ${{ secrets.AKS_NAME }}
+            az aks get-credentials --resource-group ${{ secrets.AKS_RESOURCE_GROUP }} --name ${{ secrets.AKS_NAME }}
 
         - name: Set Kubernetes context
           run: |
-          az aks get-credentials --resource-group ${{ secrets.AKS_RESOURCE_GROUP }} --name ${{ secrets.AKS_NAME }}
+            az aks get-credentials --resource-group ${{ secrets.AKS_RESOURCE_GROUP }} --name ${{ secrets.AKS_NAME }}
         
         - name: Deploy to AKS
           run: |
