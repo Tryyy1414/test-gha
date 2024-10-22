@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.appName }}  # Puedes reemplazar esto con el nombre de tu aplicación
+spec:
+  type: LoadBalancer  # O ClusterIP, NodePort, dependiendo de tus necesidades
+  ports:
+    - port: 80  # El puerto externo
+      targetPort: 8080  # El puerto interno en el contenedor
+  selector:
+    app: {{ .Values.appName }}  # Debe coincidir con el label del pod

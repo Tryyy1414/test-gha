@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.appName }}  # Puedes reemplazar esto con el nombre de tu aplicación
+  namespace: default  # Cambia esto si estás usando un namespace diferente
+spec:
+  replicas: 1  # Ajusta según tus necesidades
+  selector:
+    matchLabels:
+      app: {{ .Values.appName }}  # Debe coincidir con el label del pod
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.appName }}
+    spec:
+      containers:
+      - name: {{ .Values.appName }}
+        image: {{ .Values.image }}  # Ejemplo: <acr-name>.azurecr.io/<image-name>:<tag>
+        ports:
+        - containerPort: 8080  # Cambia esto si tu aplicación usa otro puerto
