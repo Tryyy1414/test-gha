@@ -12,11 +12,11 @@ jobs:
         # checkout
         - name: 'Checkout GitHub Action'
           uses: actions/checkout@main
-        # Login en Azure
-        - name: 'Login via Azure CLI'
-          uses: azure/login@v1
-          with:
-            creds: ${{ secrets.AZURE_CREDENTIALS }}
+        # # Login en Azure
+        # - name: 'Login via Azure CLI'
+        #   uses: azure/login@v1
+        #   with:
+        #     creds: ${{ secrets.AZURE_CREDENTIALS }}
         
         - name: 'Build and push image'
           uses: azure/docker-login@v1
@@ -28,15 +28,15 @@ jobs:
             docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/nttjavatest:${{ github.sha }}
             docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/nttjavatest:${{ github.sha }}
         
-        - name: Set Kubernetes context
-          run: |
-            az aks get-credentials --resource-group ${{ secrets.AKS_RESOURCE_GROUP }} --name ${{ secrets.AKS_NAME }}
+        # - name: Set Kubernetes context
+        #   run: |
+        #     az aks get-credentials --resource-group ${{ secrets.AKS_RESOURCE_GROUP }} --name ${{ secrets.AKS_NAME }}
 
-        - name: Set Kubernetes context
-          run: |
-            az aks get-credentials --resource-group ${{ secrets.AKS_RESOURCE_GROUP }} --name ${{ secrets.AKS_NAME }}
+        # - name: Set Kubernetes context
+        #   run: |
+        #     az aks get-credentials --resource-group ${{ secrets.AKS_RESOURCE_GROUP }} --name ${{ secrets.AKS_NAME }}
         
-        - name: Deploy to AKS
-          run: |
-            kubectl apply -f deployment.yaml
-            kubectl apply -f service.yaml
+        # - name: Deploy to AKS
+        #   run: |
+        #     kubectl apply -f deployment.yaml
+        #     kubectl apply -f service.yaml
